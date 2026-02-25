@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop CMS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="cms-body">
+    <header class="cms-header">
+        <div class="container cms-header-row">
+            <div>
+                <h1>Coffee Shop CMS</h1>
+                <p>Edit your website content and branding in one place.</p>
+            </div>
+            <a class="btn btn-primary" href="coffee_shop.html" target="_blank" rel="noopener noreferrer">View Website</a>
+        </div>
+    </header>
+
+    <main class="container cms-main">
+        <aside class="cms-card cms-nav-card" aria-label="CMS navigation">
+            <h2>Quick Navigation</h2>
+            <nav class="cms-nav-links">
+                <a href="#section-brand">Brand & Hero</a>
+                <a href="#section-about">About</a>
+                <a href="#section-menu">Menu Items</a>
+                <a href="#section-hours">Opening Hours</a>
+                <a href="#section-contact">Contact</a>
+                <a href="#section-location">Location Guide</a>
+                <a href="#section-theme">Theme</a>
+            </nav>
+            <div id="cmsStatus" class="cms-status" role="status" aria-live="polite">Ready to edit.</div>
+        </aside>
+
+        <div class="cms-content">
+        <form id="cmsForm" class="cms-form" novalidate>
+            <section id="section-brand" class="cms-card cms-section">
+                <h2>Brand & Hero</h2>
+                <label>Business Name <input type="text" name="businessName" required></label>
+                <label>Tagline <input type="text" name="tagline" required></label>
+                <label>Logo Image Path/URL <input type="text" name="logoImage" required></label>
+                <div class="cms-image-tools">
+                    <input type="file" id="logoImageFile" accept="image/*" hidden>
+                    <button type="button" class="btn btn-outline cms-dark-outline" id="logoImageUploadBtn">Upload Image</button>
+                    <button type="button" class="btn btn-outline cms-dark-outline" id="logoImageClearBtn">Clear Image</button>
+                </div>
+                <label>Hero Title <input type="text" name="heroTitle" required></label>
+                <label>Hero Subtitle <textarea name="heroSubtitle" rows="2" required></textarea></label>
+                <label>Hero Image Path/URL <input type="text" name="heroImage" required></label>
+                <div class="cms-image-tools">
+                    <input type="file" id="heroImageFile" accept="image/*" hidden>
+                    <button type="button" class="btn btn-outline cms-dark-outline" id="heroImageUploadBtn">Upload Image</button>
+                    <button type="button" class="btn btn-outline cms-dark-outline" id="heroImageClearBtn">Clear Image</button>
+                </div>
+                <label>Menu Section Image Path/URL <input type="text" name="menuSectionImage" required></label>
+                <div class="cms-image-tools">
+                    <input type="file" id="menuSectionImageFile" accept="image/*" hidden>
+                    <button type="button" class="btn btn-outline cms-dark-outline" id="menuSectionImageUploadBtn">Upload Image</button>
+                    <button type="button" class="btn btn-outline cms-dark-outline" id="menuSectionImageClearBtn">Clear Image</button>
+                </div>
+                <label>Announcement <input type="text" name="announcement" required></label>
+                <div class="image-preview-grid">
+                    <div>
+                        <p class="cms-note">Logo preview</p>
+                        <img id="logoPreview" class="cms-image-preview" src="" alt="Logo preview">
+                    </div>
+                    <div>
+                        <p class="cms-note">Hero preview</p>
+                        <img id="heroPreview" class="cms-image-preview" src="" alt="Hero preview">
+                    </div>
+                    <div>
+                        <p class="cms-note">Menu section preview</p>
+                        <img id="menuSectionPreview" class="cms-image-preview" src="" alt="Menu section preview">
+                    </div>
+                </div>
+            </section>
+
+            <section id="section-about" class="cms-card cms-section">
+                <h2>About Section</h2>
+                <label>About Title <input type="text" name="aboutTitle" required></label>
+                <label>About Description <textarea name="aboutText" rows="4" required></textarea></label>
+                <label>Feature List (one per line)
+                    <textarea name="features" rows="5" placeholder="Fast Wi-Fi&#10;Pet-friendly patio"></textarea>
+                </label>
+            </section>
+
+            <section id="section-menu" class="cms-card cms-section">
+                <h2>Menu Items</h2>
+                <p class="cms-note">Add up to 8 items. Leave unused rows blank.</p>
+                <div id="menuEditor" class="menu-editor"></div>
+                <button type="button" class="btn btn-outline cms-dark-outline" id="addMenuItem">Add Item</button>
+            </section>
+
+            <section id="section-hours" class="cms-card cms-section">
+                <h2>Opening Hours</h2>
+                <label>Hours (format: Day | Time, one per line)
+                    <textarea name="hours" rows="5" placeholder="Monday - Friday | 7:00 AM - 8:00 PM"></textarea>
+                </label>
+            </section>
+
+            <section id="section-contact" class="cms-card cms-section">
+                <h2>Contact</h2>
+                <label>Address <input type="text" name="address" required></label>
+                <label>Phone <input type="text" name="phone" required></label>
+                <label>Email <input type="email" name="email" required></label>
+                <label>Messenger Link <input type="url" name="messengerUrl" required></label>
+                <label>Facebook Link <input type="url" name="facebookUrl" required></label>
+                <label>Instagram Link <input type="url" name="instagramUrl" required></label>
+                <label>TikTok Link <input type="url" name="tiktokUrl" required></label>
+            </section>
+
+            <section id="section-location" class="cms-card cms-section">
+                <h2>Location Guide</h2>
+                <label>Location Section Title <input type="text" name="locationTitle" required></label>
+                <label>Location Guide Text <textarea name="locationText" rows="3" required></textarea></label>
+                <label>Map Embed URL (Google Maps Embed link)
+                    <input type="url" name="mapEmbedUrl" required>
+                </label>
+                <p class="cms-note">Use an embeddable URL (example: https://www.google.com/maps?q=your+address&amp;output=embed).</p>
+            </section>
+
+            <section id="section-theme" class="cms-card cms-section">
+                <h2>Theme</h2>
+                <div class="theme-grid">
+                    <label>Primary Color <input type="color" name="primary"></label>
+                    <label>Accent Color <input type="color" name="accent"></label>
+                </div>
+            </section>
+
+            <div class="cms-actions">
+                <button class="btn btn-primary" type="submit">Save Changes</button>
+                <button class="btn btn-outline cms-dark-outline" id="resetDefault" type="button">Reset to Default</button>
+                <a class="btn btn-outline cms-dark-outline" href="coffee_shop.html">Back to Website</a>
+            </div>
+        </form>
+
+        <aside class="cms-card help-card">
+            <h3>How this CMS works</h3>
+            <ul>
+                <li>Changes are saved in your browser's local storage.</li>
+                <li>No coding is needed for daily content updates.</li>
+                <li>For team editing, connect this UI to a cloud CMS later.</li>
+            </ul>
+        </aside>
+        </div>
+    </main>
+
+    <script src="cms.js"></script>
+</body>
+</html>

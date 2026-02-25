@@ -3,103 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
     <link rel="stylesheet" href="styles.css">
-    <title>Jake's Coffee Shop</title>
-    <script>
-        let isCssVersion = false;
-
-        function toggleVersion() {
-            isCssVersion = !isCssVersion;
-
-            if (isCssVersion) {
-                document.querySelector("h1").style.display = "none";
-                document.querySelector("nav").style.display = "none";
-                document.querySelector(".css-header").style.display = "block";
-                document.querySelector(".css-nav").style.display = "block";
-                document.body.classList.add("css-version");
-                document.getElementById("css-website-link").innerText = "HTML Website";
-            } else {
-                document.querySelector("h1").style.display = "block";
-                document.querySelector("nav").style.display = "block";
-                document.querySelector(".css-header").style.display = "none";
-                document.querySelector(".css-nav").style.display = "none";
-                document.body.classList.remove("css-version");
-                document.getElementById("css-website-link").innerText = "CSS Website";
-            }
-        }
-
-        function showSection(section) {
-            const sections = ["main-content", "menu-section", "music-section", "jobs-section"];
-            sections.forEach(id => document.getElementById(id).style.display = id === section ? 'block' : 'none');
-        }
-    </script>
 </head>
 <body>
-    <h1>Jake’s Coffee Shop</h1>
-    <nav>
-        <a href="#" onclick="showSection('main-content'); return false;">Home</a> 
-        <a href="#" onclick="showSection('menu-section'); return false;">Menu</a> 
-        <a href="#" onclick="showSection('music-section'); return false;">Music</a> 
-        <a href="#" onclick="showSection('jobs-section'); return false;">Jobs</a>
-    </nav>
-    
-    <div class="css-header" style="display: none;">Jake’s Coffee Shop</div>
-    <div class="css-nav" style="display: none;">
-        <a href="#" onclick="showSection('main-content'); return false;">Home</a> 
-        <a href="#" onclick="showSection('menu-section'); return false;">Menu</a> 
-        <a href="#" onclick="showSection('music-section'); return false;">Music</a> 
-        <a href="#" onclick="showSection('jobs-section'); return false;">Jobs</a>
+    <header class="site-header">
+        <div class="container header-row">
+            <a href="#home" class="brand">
+                <img id="brandLogo" class="brand-logo" src="" alt="">
+                <span id="brandName"></span>
+            </a>
+            <nav class="main-nav">
+                <a href="#home">Home</a>
+                <a href="#menu">Menu</a>
+                <a href="#about">About</a>
+                <a href="#hours">Hours</a>
+                <a href="#location">Location</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <img id="heroImage" src="" alt="" class="hero-image">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <p class="eyebrow" id="heroEyebrow"></p>
+                <h1 id="heroTitle"></h1>
+                <p id="heroSubtitle"></p>
+                <div class="hero-actions">
+                    <a href="#menu" class="btn btn-primary" id="menuCtaBtn"></a>
+                    <a href="#contact" class="btn btn-outline" id="visitCtaBtn"></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="announcement" id="announcementSection">
+            <div class="container">
+                <p id="announcementText"></p>
+            </div>
+        </section>
+
+        <section id="menu" class="section">
+            <div class="container">
+                <div class="section-head">
+                    <h2 id="menuSectionTitle"></h2>
+                    <p id="menuSectionSubtitle"></p>
+                </div>
+                <div id="menuGrid" class="menu-grid"></div>
+
+                <div class="full-menu-block">
+                    <h3 id="fullMenuTitle">Full Menu</h3>
+                    <article id="menuImageCard" class="menu-card menu-image-card full-menu-card" role="button" tabindex="0" aria-label="View full menu image">
+                        <img id="menuSectionImage" class="menu-image-thumb" src="" alt="">
+                        <div class="menu-card-content">
+                            <h3 id="menuImageCardTitle">View Full Menu</h3>
+                            <p>Click to view the complete menu image.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section section-alt">
+            <div class="container split-layout">
+                <div>
+                    <h2 id="aboutTitle"></h2>
+                    <p id="aboutText"></p>
+                </div>
+                <div class="feature-card">
+                    <h3 id="featureTitle"></h3>
+                    <ul id="featureList"></ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="hours" class="section">
+            <div class="container">
+                <h2 id="hoursTitle"></h2>
+                <div id="hoursGrid" class="hours-grid"></div>
+            </div>
+        </section>
+
+        <section id="location" class="section section-alt">
+            <div class="container location-grid">
+                <div>
+                    <h2 id="locationTitle"></h2>
+                    <p id="locationText"></p>
+                </div>
+                <div class="map-frame-wrap">
+                    <iframe
+                        id="locationMap"
+                        class="map-frame"
+                        src=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        allowfullscreen
+                        title="Location map"
+                    ></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="menuImageModal" class="menu-modal" aria-hidden="true">
+        <div class="menu-modal-backdrop" id="menuModalBackdrop"></div>
+        <div class="menu-modal-content" role="dialog" aria-modal="true" aria-label="Full menu image viewer">
+            <button id="closeMenuModal" class="menu-modal-close" type="button" aria-label="Close menu image">×</button>
+            <img id="menuModalImage" class="menu-modal-image" src="" alt="Full menu image">
+        </div>
     </div>
 
-    <div id="main-content" style=>
-        <p>Come in and experience...</p>
-        <p> <img src="images/coffee.jpg" alt="Coffee cup" width="150"></p>
-        <ul>
-            <li>Specialty Coffee and Tea</li>
-            <li>Freshly made sandwiches</li>
-            <li>Bagels, Muffins, and Organic Snacks</li>
-            <li>Music and Poetry Readings</li>
-            <li>Open mic nights</li>
-        </ul>
-        <p>23 Pine Road<br>Nottingham, NG1 5YU<br>0115 9324567</p>
-    </div>
-    
-    <div id="menu-section" style="display: none;">
-        <h2>Menu</h2>
-        <ul>
-            <li><img src="images/cappucinno.jpg" alt="Cappuccino" width="50"><br><b>Cappuccino (P120) </b></li>
-            <li><img src="images/matcha_latte.jpg" alt="Matcha Latte" width="50"><br><b>Matcha Latte (P150)</b></li>
-            <li><img src="images/iced_americano.jpg" alt="Iced Americano" width="50"><br><b>Iced Americano (P110)</b></li>
-            <li><img src="images/pesto_panini.jpg" alt="Pesto Panini" width="50"><br><b>Pesto Panini (P200)</b></li>
-            <li><img src="images/blueberry_muffin.jpg" alt="Blueberry Muffin" width="50"><br><b>Blueberry Muffin (P110)</b></li>
-        </ul>
+    <footer id="contact" class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <h3 id="footerShopName"></h3>
+                <p id="footerTagline"></p>
+            </div>
+            <div>
+                <h4 id="contactTitle"></h4>
+                <p id="contactAddress"></p>
+                <p><a id="contactPhone" href="#"></a></p>
+                <p><a id="contactEmail" href="#"></a></p>
+            </div>
+            <div>
+                <h4 id="socialTitle">Social Media</h4>
+                <p><a id="socialFacebook" href="#" target="_blank" rel="noopener noreferrer">Facebook</a></p>
+                <p><a id="socialInstagram" href="#" target="_blank" rel="noopener noreferrer">Instagram</a></p>
+                <p><a id="socialTiktok" href="#" target="_blank" rel="noopener noreferrer">TikTok</a></p>
+            </div>
+        </div>
+        <p class="copyright" id="copyrightText"></p>
+    </footer>
+
+    <div class="floating-actions" aria-label="Quick contact actions">
+        <a id="messengerFab" class="fab fab-messenger" href="#" target="_blank" rel="noopener noreferrer" aria-label="Chat on Messenger" title="Messenger">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="fab-icon">
+                <path fill="currentColor" d="M12 2C6.477 2 2 6.145 2 11.258c0 2.915 1.455 5.515 3.726 7.213V22l3.298-1.806c.88.244 1.812.376 2.776.376 5.523 0 10-4.145 10-9.258S17.523 2 12 2zm1.118 12.44l-2.543-2.715-4.961 2.715 5.457-5.793 2.598 2.715 4.906-2.715-5.457 5.793z"/>
+            </svg>
+        </a>
+        <a id="callFab" class="fab fab-call" href="#" aria-label="Call now" title="Call">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="fab-icon">
+                <path fill="currentColor" d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.11.37 2.31.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.3 21 3 13.7 3 4a1 1 0 0 1 1-1h3.49a1 1 0 0 1 1 1c0 1.27.2 2.47.57 3.58a1 1 0 0 1-.25 1.01l-2.19 2.2z"/>
+            </svg>
+        </a>
     </div>
 
-    <div id="music-section" style="display: none;">
-        <h2>Music</h2>
-        <ul>
-            <li><img src="images/jazz.jpg" alt="Jazz" width="50"><br><b>Jazz</b></li>
-            <li><img src="images/lofi_beats.jpg" alt="Lo-Fi Beats" width="50"><br><b>Lo-Fi Beats</b></li>
-            <li><img src="images/indie_music.jpg" alt="Indie Acoustic" width="50"><br><b>Indie Acoustic</b></li>
-            <li><img src="images/bossa_nova.jpg" alt="Bossa Nova" width="50"><br><b>Bossa Nova</b></li>
-            <li><img src="images/piano_music.jpg" alt="Classical Piano" width="50"><br><b>Classical Piano</b></li>
-        </ul>
-    </div>
-
-    <div id="jobs-section" style="display: none;">
-        <h2>Jobs</h2>
-        <ul>
-            <li><img src="images/barista.jpg" alt="Barista" width="50"><br> <b> Barista </b></li>
-            <li><img src="images/cashier.jpg" alt="Cashier" width="50"><br> <b> Cashier</b></li>
-            <li><img src="images/baker.jpg" alt="Baker" width="50"><br> <b> Baker</b></li>
-            <li><img src="images/server.jpg" alt="Server" width="50"><br> <b> Server </b></li>
-            <li><img src="images/website_developer.jpg" alt="Website Developer" width="50"><br><b> Website Developer</b></li>
-        </ul>
-    </div>
-    <div id="footer">
-        <p>Copyright 2017 Jake’s Coffee House<br>
-            <a href="mailto:jake@jcoffee.com">jake@jcoffee.com</a></p>
-        <p><a href="#" id="css-website-link" onclick="toggleVersion(); return false;">CSS Website</a> >>>>></p>
-    </div>
+    <script src="site.js"></script>
 </body>
 </html>
